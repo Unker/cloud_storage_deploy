@@ -1,0 +1,6 @@
+[submodule "cloud_storage_server"]
+	path = cloud_storage_server
+	url = https://github.com/Unker/cloud_storage_server
+[submodule "cloud_storage_client"]
+	path = cloud_storage_client
+	url = https://github.com/Unker/cloud_storage_client
