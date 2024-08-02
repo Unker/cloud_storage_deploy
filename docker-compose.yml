@@ -23,7 +23,7 @@ services:
     networks:
       - app-network
     volumes:
-      - ./var/www/uploads:/usr/src/app/users_files
+      - ./users_files:/usr/src/app/users_files
 
   frontend:
     build:
