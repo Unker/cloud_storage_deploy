@@ -22,8 +22,8 @@ services:
       context: ./cloud_storage_server/cloud_storage
     networks:
       - app-network
-  volumes:
-    - ./var/www/uploads:/usr/src/app/users_files
+    volumes:
+      - ./var/www/uploads:/usr/src/app/users_files
 
   frontend:
     build:
