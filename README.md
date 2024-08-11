@@ -19,8 +19,46 @@ Cloud storage
 
 # Технологии <a name="технологии"></a>
 
-Сервер реализован на языке [Python](https://www.python.org/) с использованием фреймворка 
-[Django](https://www.djangoproject.com/) и СУБД [PostgreSQL](https://www.postgresql.org/)
+<style>
+    .tech-logo-l {
+        height: 50px;
+    }
+
+    .tech-logo-s {
+        height: 25px;
+    }
+
+    .tech-logo {
+        border: 2px solid #000;
+        border-radius: 8px;
+        padding: 5px;
+        margin: 0 10px;
+        background: white;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .tech-logo:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+    .tailwind-logo {
+        height: 25px !important;
+    }
+</style>
+
+### Backend
+
+<img src="./assets/img/Django_logo.png" alt="Django" title="Django" class="tech-logo tech-logo-l">
+<img src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL" title="PostgreSQL" class="tech-logo tech-logo-l">
+
+### Frontend
+
+<img src="./assets/img/TypeScript_logo.png" alt="TypeScript" title="TypeScript" class="tech-logo tech-logo-l">
+<img src="https://vitejs.dev/logo-with-shadow.png" alt="Vite" title="Vite" class="tech-logo tech-logo-l">
+<img src="./assets/img/React_logo_light.svg" alt="React" title="React" class="tech-logo tech-logo-l">
+<img src="./assets/img/Tailwind_CSS_logo.png" alt="Tailwind" title="Tailwind" class="tech-logo tech-logo-s">
+<img src="./assets/img/Redux_Logo.png" alt="Redux Toolkit" title="Redux Toolkit" class="tech-logo tech-logo-s">
+<img src="./assets/img/react-router-color.svg" alt="React Router" title="React Router" class="tech-logo tech-logo-s" >
 
 
 # Начало работы <a name="начало-работы"></a>
