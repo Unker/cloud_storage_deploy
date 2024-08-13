@@ -20,16 +20,19 @@ Cloud storage
 # Технологии <a name="технологии"></a>
 
 ### Backend
+<img src="./assets/img/Django_logo.png" alt="Django" title="Django" height="50" style="margin: 10px;">
+<img src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL" title="PostgreSQL" height="50" style="margin: 10px;">
 
-| ![Django](./assets/img/Django_logo.png "Django") | ![PostgreSQL](https://www.postgresql.org/media/img/about/press/elephant.png "PostgreSQL") |
-|:------------------------------------------------:|:----------------------------------------------------------------------------------------:|
 
 ### Frontend
+<img src="./assets/img/TypeScript_logo.png" alt="TypeScript" title="TypeScript" height="50" style="margin: 10px;">
+<img src="https://vitejs.dev/logo-with-shadow.png" alt="Vite" title="Vite" height="50" style="margin: 10px;">
+<img src="./assets/img/React_logo_light.svg" alt="React" title="React" height="50" style="margin: 10px;">
+<img src="./assets/img/Tailwind_CSS_logo.png" alt="Tailwind" title="Tailwind" height="25" style="margin: 10px;">
 
-| ![TypeScript](./assets/img/TypeScript_logo.png "TypeScript") | ![Vite](https://vitejs.dev/logo-with-shadow.png "Vite") |
-|:-----------------------------------------------------------:|:------------------------------------------------------:|
-| ![React](./assets/img/React_logo_light.svg "React")         | ![Tailwind](./assets/img/Tailwind_CSS_logo.png "Tailwind") |
-| ![Redux Toolkit](./assets/img/Redux_Logo.png "Redux Toolkit")| ![React Router](./assets/img/react-router-color.svg "React Router") |
+<img src="./assets/img/Redux_Logo.png" alt="Redux Toolkit" title="Redux Toolkit" height="25" style="margin: 10px;">
+<img src="./assets/img/react-router-color.svg" alt="React Router" title="React Router" height="25" style="margin: 10px;">
+
 
 
 # Начало работы <a name="начало-работы"></a>
@@ -150,4 +153,5 @@ docker compose up --build
 
 ## Todo <a name="to-do"></a>
 
-Подключить доменное имя
++ Подключить доменное имя
++ CI/CD
