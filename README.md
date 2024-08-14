@@ -1,28 +1,26 @@
-Cloud storage
+Cloud Storage
 ===============
 
-Приложение "облачное хранилище". Приложение позволяет пользователям загружать, отправлять, скачивать файлы.
+The "Cloud Storage" application allows users to upload, send, and download files.
 
-***Содержание:***
+***Contents:***
 
-- [Технологии](#технологии)
-- [Начало работы](#начало-работы)
-  - [Настройка сервера](#настройка-сервера)
-  - [Настройка проекта](#настройка-проекта)
-    - [Настройка БД](#настройка-бд)
-    - [Клонирование проекта](#клонирование-проекта)
-    - [Настройка переменных окружения backend](#env-backend)
-    - [Настройка переменных окружения frontend](#env-frontend)
-  - [Запуск проекта через Docker Compose](#run-docker)
-- [To do](#to-do)
+- [Technologies](#technologies)
+- [Getting Started](#getting-started)
+  - [Server Setup](#server-setup)
+  - [Project Setup](#project-setup)
+    - [Database Setup](#database-setup)
+    - [Cloning the Project](#cloning-the-project)
+    - [Setting Backend Environment Variables](#env-backend)
+    - [Setting Frontend Environment Variables](#env-frontend)
+  - [Running the Project with Docker Compose](#run-with-docker)
+- [To Do](#to-do)
 
-
-# Технологии <a name="технологии"></a>
+# Technologies <a name="technologies"></a>
 
 ### Backend
 <img src="./assets/img/Django_logo.png" alt="Django" title="Django" height="50" style="margin: 10px;">
 <img src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL" title="PostgreSQL" height="50" style="margin: 10px;">
-
 
 ### Frontend
 <img src="./assets/img/TypeScript_logo.png" alt="TypeScript" title="TypeScript" height="50" style="margin: 10px;">
@@ -33,73 +31,72 @@ Cloud storage
 <img src="./assets/img/Redux_Logo.png" alt="Redux Toolkit" title="Redux Toolkit" height="25" style="margin: 10px;">
 <img src="./assets/img/react-router-color.svg" alt="React Router" title="React Router" height="25" style="margin: 10px;">
 
+# Getting Started <a name="getting-started"></a>
 
-
-# Начало работы <a name="начало-работы"></a>
-
-### Настройка сервера <a name="настройка-сервера"></a>
-1. Подключитесь к серверу через root пользователя
+### Server Setup <a name="server-setup"></a>
+1. Connect to the server as the root user:
     ```bash
     ssh <ip>
     ```
-    где `<ip>` - ip-адрес сервера, например:
+    where `<ip>` is the server's IP address, for example:
     ```bash
     ssh 109.71.245.96
     ```
 
-1. Установите postgresql
+1. Install PostgreSQL:
     ```bash
     apt install postgresql
     ```
 
-1. Установите Docker
+1. Install Docker:
 
     https://docs.docker.com/engine/install/ubuntu/
 
-1. Создайте пользователя и дайте ему права админа
+1. Create a user and grant them admin privileges:
     ```bash
     adduser <user>
     usermod <user> -aG sudo
     ```
-    где `<user>` - имя пользователя
+    where `<user>` is the username.
 
-1. Переключитесь на созданного пользователя
+1. Switch to the newly created user:
     ```bash
     su - <user>
     ```
 
-1. Создайте каталог проекта и переназначте владельца каталога
+1. Create the project directory and reassign ownership:
     ```bash
     sudo mkdir -p /var/www/cloud_storage
     sudo chown <user>:<user> -R /var/www/cloud_storage/
     ```
 
-### Настройка проекта <a name="настройка-проекта"></a>
-#### <ins>Настройка БД</ins> <a name="настройка-бд"></a>
+### Project Setup <a name="project-setup"></a>
 
-Настройте БД в соотвтествии с [инструкцией](https://github.com/Unker/cloud_storage_server/tree/main?tab=readme-ov-file#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-%D0%B1%D0%B4)
+#### <ins>Database Setup</ins> <a name="database-setup"></a>
 
-#### <ins>Клонирование проекта</ins> <a name="клонирование-проекта"></a>
+Set up the database according to the [instructions](https://github.com/Unker/cloud_storage_server/tree/main?tab=readme-ov-file#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-%D0%B1%D0%B4).
 
-1. Переключитесь на созданного ранее пользователя, если еще не
+#### <ins>Cloning the Project</ins> <a name="cloning-the-project"></a>
+
+1. Switch to the previously created user, if not already done:
     ```bash
     su - <user>
     ```
 
-1. Перейдите в каталог проекта и склонируйте его с репозитория
+1. Navigate to the project directory and clone it from the repository:
     ```bash
     cd /var/www/cloud_storage
     git clone https://github.com/Unker/cloud_storage_deploy.git .
     cd cloud_storage_deploy
     ```
 
-1. Скачайте субмодули
+1. Download the submodules:
     ```bash
     git submodule update --init --recursive
     ```
 
-#### <ins>Настройка переменных окружения backend</ins> <a name="env-backend"></a>
-1. Сгенерируйте SECRET_KEY для Django:
+#### <ins>Setting Backend Environment Variables</ins> <a name="env-backend"></a>
+1. Generate a SECRET_KEY for Django:
    ```bash
    python3 manage.py shell
    from django.core.management import utils
@@ -107,14 +104,13 @@ Cloud storage
    exit()
    ```
 
-1. Создайте .env файл и откройте на редактирование:
+1. Create a `.env` file and open it for editing:
    ```bash
    touch ./cloud_storage_server/cloud_storage/.env
    nano ./cloud_storage_server/cloud_storage/.env
    ```
-   
 
-1. Заполните .env следующим содержимым:
+1. Populate the `.env` file with the following content:
    ```
    SECRET_KEY_DJANGO='django-insecure-xxx'
    CORS_ALLOWED_HOSTS='http://localhost:3000,http://109.71.245.96:3000'
@@ -122,36 +118,36 @@ Cloud storage
    DB_NAME=cloud_storage_db
    DB_HOST=109.71.245.96
    DB_PORT=5432
-   DB_USER=<имя_суперпользователя>
-   DB_PASSWORD=<пароль_суперпользователя>
+   DB_USER=<superuser_name>
+   DB_PASSWORD=<superuser_password>
    STORAGE_PATH=users_files
    ```
-    - Вместо `xxx` в `SECRET_KEY_DJANGO` вставьте ключ, полученный в предыдущем действии.
-    - Для полей `CORS_ALLOWED_HOSTS` и `ALLOWED_HOSTS` вместо `109.71.245.96` укажите адреса вашего сервера
-    - Для поля `DB_HOST` - текущий адрес сервера
-    - Для `DB_USER` - имя вашего суперпользователя
-    - Для `DB_PASSWORD` - пароль вашего суперпользователя
+    - Replace `xxx` in `SECRET_KEY_DJANGO` with the key created in the previous step.
+    - For `CORS_ALLOWED_HOSTS` and `ALLOWED_HOSTS`, replace `109.71.245.96` with your server's address.
+    - For `DB_HOST`, use the current server address.
+    - For `DB_USER`, use your superuser name.
+    - For `DB_PASSWORD`, use your superuser password.
 
-#### <ins>Настройка переменных окружения frontend</ins> <a name="env-frontend"></a>
-1. Создайте .env файл и откройте на редактирование:
+#### <ins>Setting Frontend Environment Variables</ins> <a name="env-frontend"></a>
+1. Create a `.env` file and open it for editing:
     ```bash
     touch ./cloud_storage_client/.env
     nano ./cloud_storage_client/.env
     ```
 
-1. Заполните .env следующим содержимым:
+1. Populate the `.env` file with the following content:
     ```
     VITE_SERVER_URL='http://109.71.245.96/api'
     ```
-***Вместо `109.71.245.96` укажите адрес вашего сервера***
+***Replace `109.71.245.96` with your server's address.***
 
-## Запуск проекта через Docker Compose <a name="run-docker"></a>
+## Running the Project with Docker Compose <a name="run-with-docker"></a>
 ```bash
 cd /var/www/cloud_storage/cloud_storage_deploy
 docker compose up --build
 ```
 
-## Todo <a name="to-do"></a>
+## To Do <a name="to-do"></a>
 
-+ Подключить доменное имя
-+ CI/CD
++ Connect a domain name.
++ Set up CI/CD.
