@@ -21,6 +21,10 @@ The "Cloud Storage" application allows users to upload, send, and download files
 ### Backend
 <img src="./assets/img/Django_logo.png" alt="Django" title="Django" height="50" style="margin: 10px;">
 <img src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL" title="PostgreSQL" height="50" style="margin: 10px;">
+<img src="https://nginx.org/nginx.png" alt="nginx" title="nginx" height="50" style="margin: 10px;">
+<img src="https://gunicorn.org/images/logo.jpg" alt="gunicorn" title="gunicorn" height="50" style="margin: 10px;">
+
+
 
 ### Frontend
 <img src="./assets/img/TypeScript_logo.png" alt="TypeScript" title="TypeScript" height="50" style="margin: 10px;">
