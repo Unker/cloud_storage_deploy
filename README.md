@@ -22,7 +22,7 @@ The "Cloud Storage" application allows users to upload, send, and download files
 <img src="./assets/img/Django_logo.png" alt="Django" title="Django" height="50" style="margin: 10px;">
 <img src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL" title="PostgreSQL" height="50" style="margin: 10px;">
 <img src="https://nginx.org/nginx.png" alt="nginx" title="nginx" height="50" style="margin: 10px;">
-<img src="https://gunicorn.org/images/logo.jpg" alt="gunicorn" title="gunicorn" height="50" style="margin: 10px;">
+<img src="https://gunicorn.org/images/logo.jpg" alt="gunicorn" title="gunicorn" height="70" style="margin:0 10px;">
 
 
 
@@ -78,7 +78,7 @@ The "Cloud Storage" application allows users to upload, send, and download files
 
 #### <ins>Database Setup</ins> <a name="database-setup"></a>
 
-Set up the database according to the [instructions](https://github.com/Unker/cloud_storage_server/tree/main?tab=readme-ov-file#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-%D0%B1%D0%B4).
+Set up the database according to the [instructions](https://github.com/Unker/cloud_storage_server/tree/main?tab=readme-ov-file#database-setup) and [provide access](https://github.com/Unker/cloud_storage_server/tree/main?tab=readme-ov-file#database-access).
 
 #### <ins>Cloning the Project</ins> <a name="cloning-the-project"></a>
 
@@ -100,13 +100,11 @@ Set up the database according to the [instructions](https://github.com/Unker/clo
     ```
 
 #### <ins>Setting Backend Environment Variables</ins> <a name="env-backend"></a>
-1. Generate a SECRET_KEY for Django:
-   ```bash
-   python3 manage.py shell
-   from django.core.management import utils
-   utils.get_random_secret_key()
-   exit()
-   ```
+
+1. Edit the nginx configuration. Replace the `server_name` value with the IP address of your server:
+    ```bash
+    nano cloud_storage_server/cloud_storage/nginx/server.conf
+    ```
 
 1. Create a `.env` file and open it for editing:
    ```bash
@@ -126,7 +124,7 @@ Set up the database according to the [instructions](https://github.com/Unker/clo
    DB_PASSWORD=<superuser_password>
    STORAGE_PATH=users_files
    ```
-    - Replace `xxx` in `SECRET_KEY_DJANGO` with the key created in the previous step.
+    - Replace `xxx` in `SECRET_KEY_DJANGO` with your key.
     - For `CORS_ALLOWED_HOSTS` and `ALLOWED_HOSTS`, replace `109.71.245.96` with your server's address.
     - For `DB_HOST`, use the current server address.
     - For `DB_USER`, use your superuser name.
@@ -150,6 +148,28 @@ Set up the database according to the [instructions](https://github.com/Unker/clo
 cd /var/www/cloud_storage/cloud_storage_deploy
 docker compose up --build
 ```
+
+## Migrations and etc
+
+1. Migrations, create super user and collect static files
+    ```bash
+    sudo docker compose exec -it backend bash
+    python3 manage.py migrate
+    python3 manage.py createsuperuser
+    python3 manage.py collectstatic
+    ```
+
+## Useful scripts <a name="useful-scripts"></a>
+###
+1. Generate a SECRET_KEY for Django:
+   ```bash
+   sudo docker compose exec -it backend bash
+   python3 manage.py shell
+   from django.core.management import utils
+   utils.get_random_secret_key()
+   exit()
+   ```
+
 
 ## To Do <a name="to-do"></a>
 
